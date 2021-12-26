@@ -33,6 +33,8 @@ type Props<ItemT> = {
   onSlideChange?: (a: number, b: number) => void;
   onSkip?: () => void;
   onDone?: () => void;
+  onNext?: () => void;
+  onPrev?: () => void;
   renderPagination?: (activeIndex: number) => React.ReactNode;
   activeDotStyle: ViewStyle;
   dotStyle: ViewStyle;
@@ -161,7 +163,7 @@ export default class AppIntroSlider<ItemT = any> extends React.Component<
     this._renderButton(
       'Next',
       this.props.nextLabel,
-      () => this.goToSlide(this.state.activeIndex + 1, true),
+      this.props.onNext,
       this.props.renderNextButton,
     );
 
@@ -170,7 +172,7 @@ export default class AppIntroSlider<ItemT = any> extends React.Component<
     this._renderButton(
       'Prev',
       this.props.prevLabel,
-      () => this.goToSlide(this.state.activeIndex - 1, true),
+      this.props.onNext,
       this.props.renderPrevButton,
     );
 
